@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Consolas MS", sans-serif;
+  font-size: 22px;
+  background-color: Bisque;
+  color: Maroon;
+  margin: 0;
+  padding: 0;
+}
+
+
+.main-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.canvas {
+  background-color: beige;
+  color: Navy;
+  border: 2px solid beige;
+  border-radius: 15px;
+  margin: 0;
+}
+
+.message {
+
+  background-color: DarkSalmon;
+  color: Navy;
+  text-align: center;
+}
+
