@@ -47,11 +47,24 @@ window.onload = function() {
       return "coord = ("+this.x0+","+this.y0+") vel = ("+this.vx+","+this.vy+")";
     }
 
+    getVertexes() {
+
+      return [[this.x0,this.y0],
+              [this.x0,this.y1],
+              [this.x1,this.y0],
+              [this.x1,this.y1]];
+    }
+
     add(vx, vy) {
       this.x0 += vx;
       this.x1 += vx;
       this.y0 += vy;
       this.y1 += vy;
+    }
+
+    static isInside(x,y,block) {
+      return (x >= block.x0 && x <= block.x1 &&
+              y >= block.y0 && y <= block.y1);
     }
 
 
@@ -60,20 +73,24 @@ window.onload = function() {
       var x;
       var y;
 
-      var coordinates = [
-        [block1.x0,block1.y0],
-        [block1.x0,block1.y1],
-        [block1.x1,block1.y0],
-        [block1.x1,block1.y1]];
+      var coordinates1 = block1.getVertexes();
 
-      for(var i=0; i < coordinates.length; i++) {
+      for(var e1 of coordinates1) {
 
-        x = coordinates[i][0];
+        var [x1, y1] = e1;
 
-        y = coordinates[i][1];
+        if(Block.isInside(x1,y1,block2)) {
+          return true;
+        }
+      }
 
-        if(x >= block2.x0 && x <= block2.x1 &&
-           y >= block2.y0 && y <= block2.y1) {
+      var coordinates2 = block2.getVertexes();
+
+      for(var e2 of coordinates2) {
+
+        var [x2, y2] = e2;
+
+        if(Block.isInside(x2,y2,block1)) {
           return true;
         }
       }
